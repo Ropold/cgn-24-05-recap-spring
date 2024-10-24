@@ -4,9 +4,9 @@ import lombok.With;
 
 @With
 public record TodoModel(
-     String id,
-     String todo,
-     String doing,
-     String done
+        String id,
+        String todo,
+        String description,
+        TodoStatus status
 ) {
 }

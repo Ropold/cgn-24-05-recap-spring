@@ -21,20 +21,31 @@ public class TodoController {
         return todoService.listAllTodos();
     }
 
+    @GetMapping("/{id}")
+    public TodoModel getTodoModelById(@PathVariable String id) {
+        return todoService.getTodoModelById(id);
+    }
+
     @PostMapping
     public TodoModel saveNewTodoModel(@RequestBody TodoModel todoModel){
         return todoService.saveNewTodoModel(todoModel);
     }
 
-    @PutMapping
+    @PostMapping("/save-all")
+    public List<TodoModel> saveNewTodoModels(@RequestBody List<TodoModel> todoModels) {
+        return todoService.saveAllTodos(todoModels);
+    }
+
+
+    @PutMapping("/{id}")
     public TodoModel updateTodoModel(@PathVariable String id, @RequestBody TodoModel todoModel){
         return todoService.updateTodoModel(id,todoModel);
     }
 
-    @PatchMapping("/{id}")
-    public TodoModel patchTodoModel(@PathVariable String id, @RequestBody TodoModel todoModel){
-        return todoService.patchTodoModel(id,todoModel);
-    }
+//    @PatchMapping("/{id}")
+//    public TodoModel patchTodoModel(@PathVariable String id, @RequestBody TodoModel todoModel){
+//        return todoService.patchTodoModel(id,todoModel);
+//    }
 
     @DeleteMapping("/{id}")
     public boolean deleteTodoModel(@PathVariable String id){
